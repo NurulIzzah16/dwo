@@ -62,6 +62,29 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        
+        'aw' => [
+            'driver' => 'mysql',
+            'host' => env('AW_DB_HOST'),
+            'port' => env('AW_DB_PORT'),
+            'database' => env('AW_DB_DATABASE'),
+            'username' => env('AW_DB_USERNAME'),
+            'password' => env('AW_DB_PASSWORD'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+        ],
+
+        // 🔹 Koneksi ke data warehouse (DW)
+        'dw' => [
+            'driver' => 'mysql',
+            'host' => env('DW_DB_HOST'),
+            'port' => env('DW_DB_PORT'),
+            'database' => env('DW_DB_DATABASE'),
+            'username' => env('DW_DB_USERNAME'),
+            'password' => env('DW_DB_PASSWORD'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+        ],
 
         'mariadb' => [
             'driver' => 'mariadb',
