@@ -16,7 +16,7 @@
   <header class="flex px-8 py-6 justify-between shadow-sm text-[14px] bg-white">
     <div class="flex gap-8">
       <a href="" class="font-medium border-b-2">Dashboard</a>
-      <a href="" class="">Purchasing</a>
+      <a href="/purchasing" class="">Purchasing</a>
       <a href="" class="">Sales</a>
       <a href="" class="">DB Mondrian</a>
     </div>
@@ -71,7 +71,6 @@
             <button id="btnYear" class="px-4 py-1.5 bg-white rounded-r-md border-y border-r border-gray-200 cursor-pointer">Semua (T)</button>
           </div>
         </div>
-
         <div id="chartMonthContainer">
           <canvas id="profitChart" height="70"></canvas>
         </div>

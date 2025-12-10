@@ -8,3 +8,6 @@ Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/api/profit-monthly', [DashboardController::class, 'profitMonthly']);
 
+Route::get('/purchasing', function () {
+    return view('purchasing');
+});
