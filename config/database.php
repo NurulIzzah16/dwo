@@ -62,7 +62,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-        
+
         'aw' => [
             'driver' => 'mysql',
             'host' => env('AW_DB_HOST'),

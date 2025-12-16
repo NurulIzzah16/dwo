@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
-  <title>Document</title>
+  <title>Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -18,9 +18,27 @@
       <a href="" class="font-medium border-b-2">Dashboard</a>
       <a href="/purchasing" class="">Purchasing</a>
       <a href="" class="">Sales</a>
-      <a href="" class="">DB Mondrian</a>
+      <a href="/mondriansales" class="">Mondrian Sales</a>
+      <a href="/mondrianpurchasing" class="">Mondrian Purchasing</a>
     </div>
-    <p class="font-bold text-[15px]">KELOMPOK 6</p>
+    <div class="flex items-center gap-4">
+  <div class="flex flex-col leading-tight text-right">
+    <span class="text-[12px] text-gray-500">Hai,</span>
+    <span class="font-semibold text-[14px]">
+      {{ session('schuser_name') }}
+    </span>
+  </div>
+
+  <form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button
+      type="submit"
+      class="px-4 py-1.5 rounded-md bg-red-50 text-red-600 font-medium hover:bg-red-100 transition">
+      Logout
+    </button>
+  </form>
+</div>
+
   </header>
   <section class="px-8 pt-8 text-[14px] h-full">
     <div class="grid grid-cols-3 grid-rows-3 w-full gap-5 ">
@@ -74,7 +92,7 @@
         <div id="chartMonthContainer">
           <canvas id="profitChart" height="70"></canvas>
         </div>
-        
+
         <div id="chartYearContainer" class="hidden">
           <canvas id="profitYearChart" height="70"></canvas>
         </div>
