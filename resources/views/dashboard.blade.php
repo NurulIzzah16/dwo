@@ -13,28 +13,28 @@
 </head>
 
 <body class="poppins-regular text-gray-800 bg-gray-100">
-  <header class="flex px-8 py-6 justify-between shadow-sm text-[14px] bg-white">
+  <header class="flex px-8 py-6 justify-between shadow-sm text-[14px] bg-[#1b2691] text-white">
     <div class="flex gap-8">
-      <a href="" class="font-medium border-b-2">Dashboard</a>
-      <a href="/purchasing" class="">Purchasing</a>
-      <a href="" class="">Sales</a>
-      <a href="/mondriansales" class="">Mondrian Sales</a>
-      <a href="/mondrianpurchasing" class="">Mondrian Purchasing</a>
+      <a href="" class="font-medium border-b-2 border-white">Dashboard</a>
+      <a href="/purchasing" class="text-white">Purchasing</a>
+      <a href="/sales" class="text-white">Sales</a>
+      <a href="/mondriansales" class="text-white">Mondrian Sales</a>
+      <a href="/mondrianpurchasing" class="text-white">Mondrian Purchasing</a>
     </div>
     <div class="flex items-center gap-4">
   <div class="flex flex-col leading-tight text-right">
-    <span class="text-[12px] text-gray-500">Hai,</span>
-    <span class="font-semibold text-[14px]">
-      {{ session('schuser_name') }}
+    <span class="text-[12px] text-blue-100">Hai,</span>
+    <span class="font-semibold text-[14px] text-white">
+    {{ session('schuser_name') }}
     </span>
   </div>
 
   <form action="{{ route('logout') }}" method="POST">
     @csrf
     <button
-      type="submit"
-      class="px-4 py-1.5 rounded-md bg-red-50 text-red-600 font-medium hover:bg-red-100 transition">
-      Logout
+        type="submit"
+        class="px-4 py-1.5 rounded-md bg-white text-[#1b2691] font-medium hover:bg-gray-100 transition">
+        Logout
     </button>
   </form>
 </div>
@@ -57,7 +57,40 @@
           <p>Bulan Terbaik : <span class="font-semibold">November ($1,100)</span></p>
           <p>Bulan Terburuk : <span class="font-semibold">Januari (- $1,100)</span></p>
         </div>
+        <div class="flex flex-col border-t-2 border-gray-200 mt-4 pt-4 gap-2">
+        <div class="relative flex flex-row gap-[14px] items-center">
+          <img class="rounded-md bg-gray-200 p-1.5 w-[32px]" src="img/top-customer.svg" alt="">
+          <p class="text-[18px] font-medium opacity-90">Top 10 Pelanggan</p>
+        </div>
+        <div class="border rounded-lg overflow-hidden">
+            <div class="max-h-[220px] overflow-y-auto">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-100 sticky top-0">
+                <tr>
+                    <th class="px-3 py-2 text-left">No</th>
+                    <th class="px-3 py-2 text-left">Nama</th>
+                    <th class="px-3 py-2 text-right">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($topCustomers as $i => $c)
+                <tr class="border-t hover:bg-gray-50">
+                    <td class="px-3 py-2">{{ $i + 1 }}</td>
+                    <td class="px-3 py-2 truncate max-w-[160px]">
+                    {{ $c->name }}
+                    </td>
+                    <td class="px-3 py-2 text-right font-medium">
+                    ${{ number_format($c->total_purchase) }}
+                    </td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
       </div>
+
       <div class="flex flex-col w-full p-6 rounded-xl shadow-sm bg-white border-0.5">
         <div class="flex gap-[14px] items-center">
           <img class="rounded-md bg-gray-200 p-1.5 w-[32px]" src="img/uangmasuk.svg" alt="">

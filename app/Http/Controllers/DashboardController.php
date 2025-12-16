@@ -123,6 +123,18 @@ class DashboardController extends Controller
                 ];
             });
 
+// ==================================================
+// Top 10 Pelanggan Berdasarkan Total Pembelian
+// ==================================================
+$topCustomers = $dw->table('dim_customer as c')
+    ->join('tf_sales as s', 'c.CustomerID', '=', 's.CustomerID')
+    ->select('c.CustomerID', 'c.customer_name as name', DB::raw('SUM(s.sales_amount) as total_purchase'))
+    ->groupBy('c.CustomerID', 'c.customer_name')
+    ->orderByDesc('total_purchase')
+    ->limit(10)
+    ->get();
+
+
         return view('dashboard', [
             'firstYear' => $firstYear,
             'currentYear' => $currentYear,
@@ -139,6 +151,7 @@ class DashboardController extends Controller
 
             'profitPerMonth' => $profitPerMonth,
             'profitPerYear' => $profitPerYear, // <= INI DIA TITIK PER TAHUN
+            'topCustomers' => $topCustomers,
         ]);
     }
 }

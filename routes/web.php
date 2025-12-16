@@ -24,6 +24,10 @@ Route::middleware('schuser')->group(function () {
         return view('purchasing');
     });
 
+    Route::get('/sales', function () {
+        return view('sales');
+    });
+
     Route::get('/mondriansales', function () {
     return redirect()->away(
         'http://localhost:8080/mondrian/testpage.jsp?query=schsales'
